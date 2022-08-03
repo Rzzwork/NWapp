@@ -22,7 +22,7 @@ const ips = new ipaddress({
     address: 'test'
 })
 
-ips.save();
+//ips.save();
 
 app.listen(3000, () => {
     console.log("server is running on 3000")
