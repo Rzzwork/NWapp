@@ -1,45 +1,29 @@
 
+
+
 import './App.css';
-import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+import CreateAddress from './components/CreateAddress';
+import Addresses from './components/Addresses';
 
 function App() {
 
-  const [value, setValue] = useState('');
-  const [newValue, setNewValue] = useState([]);
-
-  function handleChange(e) {
-    setValue(e.target.value)
-  }
-
-  function submitResult(e) {
-
-    setNewValue((preValue) => {
-      return (
-        [...preValue, value]
-      )
-    })
-    e.preventDefault()
-  }
-
   return (
     <div className="App">
-      <div>
-        <form>
-          <input onChange={handleChange}></input>
-          <button onClick={submitResult}>submit</button>
-        </form>
-      </div>
-      <div>
-        <ul>
-          {newValue.map((item) => {
-            return (
-              <li>{item}</li>
-            )
-          })}
-        </ul>
-      </div>
 
-    </div>
+      <Router>
+        <NavBar />
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Address" element={<Addresses />} />
+            <Route path="/create" element={<CreateAddress />} />      
+        </Routes>
+      </Router>
+
+    </div >
   );
 }
 
